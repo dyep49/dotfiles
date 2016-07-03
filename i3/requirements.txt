@@ -1,0 +1,5 @@
+netifaces
+colour
+psutil
+git+http://github.com/sivel/speedtest-cli.git@modularize-2
+
