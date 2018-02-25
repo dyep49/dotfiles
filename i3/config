@@ -187,4 +187,8 @@ exec xset r rate 175 30
 
 # client.background       #ffffff
 
+# natural scroll
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-60 HorizTwoFingerScroll=1 HorizScrollDelta=-60
 
+# turn off tap to click
+exec synclient TapButton1=0 TapButton2=0 TapButton3=0
