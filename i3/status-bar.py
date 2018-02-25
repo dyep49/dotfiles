@@ -1,5 +1,6 @@
  # -*- coding: utf-8 -*-
 from i3pystatus import Status
+from i3pystatus.weather import weathercom
 
 status = Status()
 
@@ -29,13 +30,23 @@ status.register("clock",
     )
 
 status.register("weather",
-    location_code="10009",
-    units="imperial",
+    backend=weathercom.Weathercom(
+        location_code="94110:4:US",
+        units="imperial"
+    ),
     colorize=True)
+
+
+# status.register("weather",
+#     backend=weathercom.Weathercom(
+#         location_code="94110:4:US",
+#         units="imperial"
+#     ),
+#     colorize=True)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
-    interface="wlan0",
+    interface="wlp2s0",
     format_up="{essid} {quality:03.0f}%",)
 
 
