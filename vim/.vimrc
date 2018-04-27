@@ -17,6 +17,15 @@ set rtp+=/usr/local/opt/fzf
 Plugin 'junegunn/fzf'
 
 Plugin 'tpope/vim-commentary'
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jwilm/i3-vim-focus'
+Plugin 'tpope/vim-fugitive'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'tpope/vim-sensible'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Konfekt/FastFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,14 +84,42 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 map <C-e> :NERDTreeToggle<CR>
 
+" Keep temp files in fixed directory
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
+" Airine status bar settings
+let g:airline_theme='bubblegum'
+
+" i3-vim-focus settings
+map gwl :call Focus('right', 'l')<CR>
+map gwh :call Focus('left', 'h')<CR>
+map gwk :call Focus('up', 'k')<CR>
+map gwj :call Focus('down', 'j')<CR>
+
 " Indenting
 set autoindent 
+set smartindent
 filetype plugin indent on
 
+" vim markdown settings
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_github=1
+
+" FastFold
+let g:js_fold = 1
+
+" vim-javascript
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END

@@ -21,6 +21,18 @@ status.register("mpd",
         "stop": "◾",
     },)
 
+status.register(
+    'battery',
+    interval=5,
+    format='{battery_ident}: [{status} ]{percentage_design:.2f}%',
+    status = {
+        'DPL': 'DPL',
+        'CHR': 'CHR',
+        'DIS': 'DIS',
+        'FULL': '',
+    }
+)
+
 # Displays clock like this:
 # Tue 30 Jul 11:59:46 PM KW31
 #                          ^-- calendar week
@@ -36,13 +48,6 @@ status.register("weather",
     ),
     colorize=True)
 
-
-# status.register("weather",
-#     backend=weathercom.Weathercom(
-#         location_code="94110:4:US",
-#         units="imperial"
-#     ),
-#     colorize=True)
 
 # Note: requires both netifaces and basiciw (for essid and quality)
 status.register("network",
