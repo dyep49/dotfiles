@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="refined"
+ZSH_THEME=""
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -62,10 +62,15 @@ plugins=(
   git
   zsh-autosuggestions
   colored-man-pages
+  zsh-syntax-highlighting
+  zsh-bat
 )
 
 source $ZSH/oh-my-zsh.sh
 
+fpath+=("/home/dyep/.nvm/versions/node/v22.20.0/lib/node_modules/pure-prompt/functions")
+autoload -U promptinit; promptinit
+prompt pure
 # User configuration
 
 bindkey '^l' autosuggest-execute
@@ -125,11 +130,10 @@ export NVM_DIR="$HOME/.nvm"
 
 alias pcat='pygmentize -f terminal256 -O style=monokai -g'
 alias brightness='xbacklight -set'
-alias pcat='pygmentize -f terminal256 -O style=lovelace -g'
 alias xclip='xclip -selection c'
 alias flux='redshift -l 37.7749:-122.4194'
 alias i3lock='/usr/bin/i3lock -c 000000'
-alias cgrep='/home/dyep/Projects/chat/bin/chat grep'
-alias scrum='/home/dyep/Projects/engdoc/roadmap/bin/scrum -u dylan.yep'
 alias matterhorn='/home/dyep/Projects/matterhorn-40900.0.0/matterhorn'
 alias weather='curl wttr.in/~San+Francisco'
+alias bat="batcat"
+
